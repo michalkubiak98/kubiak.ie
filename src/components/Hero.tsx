@@ -4,7 +4,7 @@ export function Hero() {
   return (
     <section className="relative min-h-screen bg-warm-950">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
-        <div className="min-h-screen flex flex-col justify-center pt-28 pb-20 lg:pt-32 lg:pb-24">
+        <div className="min-h-screen flex flex-col pt-28 pb-12 lg:pt-32 lg:pb-16">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -85,27 +85,68 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Bottom line */}
-          <motion.div
+          {/* Latest project block */}
+          <motion.a
+            href="https://timelessmoments.ie"
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 1.2, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-auto pt-16 lg:pt-20 h-px bg-warm-800 origin-left"
-          />
+            transition={{ duration: 1, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
+            className="group mt-auto block origin-left bg-warm-900 hover:bg-warm-800 transition-colors overflow-hidden"
+          >
+            <div className="flex items-center justify-between px-6 sm:px-8 py-6 sm:py-7">
+              <div className="flex items-center gap-4 sm:gap-6">
+                <div className="overflow-hidden">
+                  <motion.span
+                    initial={{ y: '-110%' }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.4, delay: 2, ease: [0.16, 1, 0.3, 1] }}
+                    className="block text-[10px] uppercase tracking-[0.2em] text-warm-500"
+                  >
+                    Latest project
+                  </motion.span>
+                </div>
+                <div className="overflow-hidden">
+                  <motion.span
+                    initial={{ y: '-110%' }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.4, delay: 2.12, ease: [0.16, 1, 0.3, 1] }}
+                    className="block font-display text-base sm:text-lg font-600 text-warm-200 group-hover:text-warm-50 transition-colors"
+                  >
+                    TimelessMoments.ie
+                  </motion.span>
+                </div>
+              </div>
+              <div className="overflow-hidden">
+                <motion.span
+                  initial={{ y: '-110%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.4, delay: 2.24, ease: [0.16, 1, 0.3, 1] }}
+                  className="block text-[10px] uppercase tracking-[0.2em] text-warm-500 group-hover:text-warm-300 transition-colors"
+                >
+                  View
+                </motion.span>
+              </div>
+            </div>
+          </motion.a>
 
-          {/* Scroll indicator */}
+          {/* Scroll dots */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.6 }}
-            className="mt-8 flex justify-end"
+            transition={{ delay: 2.2, duration: 0.6 }}
+            className="mt-5 flex justify-center"
           >
             <motion.div
-              animate={{ y: [0, 6, 0] }}
+              animate={{ opacity: [0.3, 0.8, 0.3] }}
               transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
-              className="text-[10px] uppercase tracking-[0.2em] text-warm-500"
+              className="flex gap-1.5"
+              aria-hidden="true"
             >
-              Scroll
+              <span className="w-1 h-1 rounded-full bg-warm-500" />
+              <span className="w-1 h-1 rounded-full bg-warm-500" />
+              <span className="w-1 h-1 rounded-full bg-warm-500" />
             </motion.div>
           </motion.div>
         </div>

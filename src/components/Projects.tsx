@@ -8,9 +8,21 @@ interface Project {
   what: string
   role: string
   tags: string[]
+  url?: string
 }
 
 const projects: Project[] = [
+  {
+    id: 'timeless-moments',
+    client: 'TimelessMoments.ie',
+    category: 'Client Project',
+    what:
+      'A full website for a professional homecare service provider in Wicklow and Dublin, delivering person-centred care across senior care, dementia support, live-in care, and more.',
+    role:
+      'Designed and built the complete website from scratch, including responsive layouts, service pages, SEO, and Google Business integration.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    url: 'https://timelessmoments.ie',
+  },
   {
     id: 'skyfive',
     client: 'Airline Connectivity Platform',
@@ -84,6 +96,17 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
             <h3 className="font-display text-[clamp(1.6rem,3vw,2.2rem)] font-600 text-warm-50 leading-[1.15] tracking-[-0.01em]">
               {project.client}
             </h3>
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 mt-4 text-sm text-warm-400 hover:text-warm-200 transition-colors"
+              >
+                Visit live site
+                <span className="inline-block w-4 h-px bg-current group-hover:w-8 transition-all duration-300" aria-hidden="true" />
+              </a>
+            )}
           </div>
 
           {/* Right: details */}
@@ -123,9 +146,8 @@ export function Projects() {
             What I've built
           </h2>
           <p className="mt-6 text-base sm:text-lg text-warm-400 leading-relaxed max-w-[600px]">
-            Production systems I've built and shipped during 4+ years
-            working in enterprise software. This is the experience
-            I bring to every project.
+            From client projects to production systems shipped during
+            4+ years in enterprise software.
           </p>
         </motion.div>
 
