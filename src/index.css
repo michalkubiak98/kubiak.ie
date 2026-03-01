@@ -36,6 +36,7 @@ body {
   color: var(--color-warm-50);
   line-height: 1.7;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Film grain overlay */

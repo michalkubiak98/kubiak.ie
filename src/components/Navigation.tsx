@@ -34,6 +34,7 @@ export function Navigation() {
             ? 'bg-warm-950/90 backdrop-blur-md'
             : 'bg-transparent'
         }`}
+        style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
       >
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between h-20">
@@ -111,7 +112,8 @@ export function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="relative pt-28 px-6"
+              className="relative px-6"
+              style={{ paddingTop: 'calc(env(safe-area-inset-top, 0px) + 7rem)' }}
             >
               {navLinks.map((link, i) => (
                 <motion.button
