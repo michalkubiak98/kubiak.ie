@@ -31,7 +31,7 @@ export function Contact() {
           >
             <p className="text-xl sm:text-2xl text-warm-200 leading-[1.7] mb-14">
               Have a project in mind? Whether it's a website, app, or custom
-              tool - drop me an email and I'll get back to you within 24 hours.
+              tool - I'd love to hear about it.
             </p>
 
             <div className="space-y-10">
