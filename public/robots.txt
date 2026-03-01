@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://michalkubiak.dev/sitemap.xml
+Sitemap: https://kubiak.ie/sitemap.xml

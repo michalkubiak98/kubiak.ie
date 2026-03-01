@@ -178,9 +178,9 @@ export function Footer() {
 
           <div className="flex items-center gap-8">
             <a
-              href="https://linkedin.com/in/michalpkubiak"
+              href="https://www.linkedin.com/in/michalpkubiak"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer me"
               className="text-xs uppercase tracking-[0.2em] text-warm-400 hover:text-warm-200 transition-colors"
               aria-label="LinkedIn"
             >
@@ -189,7 +189,7 @@ export function Footer() {
             <a
               href="https://github.com/michalkubiak98"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer me"
               className="text-xs uppercase tracking-[0.2em] text-warm-400 hover:text-warm-200 transition-colors"
               aria-label="GitHub"
             >
