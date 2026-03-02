@@ -37,7 +37,7 @@ export function About() {
             className="lg:col-span-7"
           >
             <p className="text-xl sm:text-2xl text-warm-100 leading-[1.7]">
-              I'm Michael, a software developer based in Kerry, Ireland.
+              I'm Michal (Mee-how), a software developer based in Kerry, Ireland.
               For the past four years I've been building production software
               for some of the world's largest airlines - in-flight
               entertainment, connectivity platforms, and enterprise tools.

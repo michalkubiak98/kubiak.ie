@@ -36,7 +36,7 @@ Once your Google Business Profile is verified:
 1. Go to your Business Profile
 2. Click "Ask for reviews" - it gives you a direct link
 3. Send that link to your TimelessMoments client
-4. Ask them to write something genuine like "Michael built our website from scratch. Professional, fast, and great communication."
+4. Ask them to write something genuine like "Michal built our website from scratch. Professional, fast, and great communication."
 5. Even 1 review puts you ahead of competitors with zero reviews in the map pack
 6. Respond to the review publicly - Google likes active business owners
 
