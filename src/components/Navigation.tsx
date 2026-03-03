@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import { ThemeToggle } from './ThemeToggle'
 
 const navLinks = [
   { href: '#services', label: 'Services' },
@@ -38,18 +39,21 @@ export function Navigation() {
       >
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between h-20">
+
+            {/* Logo */}
             <motion.a
               href="#"
               onClick={(e) => {
                 e.preventDefault()
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className="font-display text-xl font-700 text-warm-50 hover:text-warm-100 transition-colors tracking-[-0.02em]"
+              className="font-display text-xl font-700 text-warm-50 hover:text-warm-100 transition-colors tracking-[-0.02em] leading-none"
               aria-label="Back to top"
             >
               Kubiak
             </motion.a>
 
+            {/* Desktop nav links + theme toggle */}
             <div className="hidden md:flex items-center gap-10">
               {navLinks.map((link) => (
                 <button
@@ -60,34 +64,40 @@ export function Navigation() {
                   {link.label}
                 </button>
               ))}
+              <ThemeToggle />
             </div>
 
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden w-10 h-10 flex items-center justify-center"
-              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            >
-              <div className="relative w-5 h-3 flex flex-col justify-between">
-                <motion.span
-                  animate={{
-                    rotate: isMobileMenuOpen ? 45 : 0,
-                    y: isMobileMenuOpen ? 6 : 0,
-                  }}
-                  className="w-full h-px bg-warm-50 origin-center"
-                />
-                <motion.span
-                  animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
-                  className="w-full h-px bg-warm-50"
-                />
-                <motion.span
-                  animate={{
-                    rotate: isMobileMenuOpen ? -45 : 0,
-                    y: isMobileMenuOpen ? -6 : 0,
-                  }}
-                  className="w-full h-px bg-warm-50 origin-center"
-                />
-              </div>
-            </button>
+            {/* Mobile: theme toggle + hamburger */}
+            <div className="md:hidden flex items-center">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="w-10 h-10 flex items-center justify-center"
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              >
+                <div className="relative w-5 h-3 flex flex-col justify-between">
+                  <motion.span
+                    animate={{
+                      rotate: isMobileMenuOpen ? 45 : 0,
+                      y: isMobileMenuOpen ? 6 : 0,
+                    }}
+                    className="w-full h-px bg-warm-50 origin-center"
+                  />
+                  <motion.span
+                    animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
+                    className="w-full h-px bg-warm-50"
+                  />
+                  <motion.span
+                    animate={{
+                      rotate: isMobileMenuOpen ? -45 : 0,
+                      y: isMobileMenuOpen ? -6 : 0,
+                    }}
+                    className="w-full h-px bg-warm-50 origin-center"
+                  />
+                </div>
+              </button>
+            </div>
+
           </div>
         </div>
         <div

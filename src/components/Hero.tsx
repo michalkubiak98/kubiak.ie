@@ -1,6 +1,20 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
 
 export function Hero() {
+  const [hasScrolled, setHasScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 30) {
+        setHasScrolled(true)
+        window.removeEventListener('scroll', onScroll)
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
     <section className="relative min-h-screen bg-warm-950">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
@@ -53,7 +67,7 @@ export function Hero() {
             className="mt-5 text-base sm:text-lg text-warm-400 leading-relaxed max-w-[580px]"
           >
             4+ years building production software for global airlines.
-            Now helping businesses in Kerry build their digital presence.
+            Now helping businesses build their digital presence.
           </motion.p>
 
           <motion.div
@@ -93,7 +107,7 @@ export function Hero() {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
-            className="group mt-auto block origin-left bg-warm-900 hover:bg-warm-800 transition-colors overflow-hidden"
+            className="group mt-auto block origin-left bg-warm-900 hover:bg-warm-800 border border-warm-700/25 transition-colors overflow-hidden"
           >
             <div className="flex items-center justify-between px-6 sm:px-8 py-6 sm:py-7">
               <div className="flex items-center gap-4 sm:gap-6">
@@ -131,23 +145,19 @@ export function Hero() {
             </div>
           </motion.a>
 
-          {/* Scroll dots */}
+          {/* Scroll hint - thin line, fades out permanently after first scroll */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.2, duration: 0.6 }}
-            className="mt-5 flex justify-center"
+            animate={{ opacity: hasScrolled ? 0 : 1 }}
+            transition={hasScrolled ? { duration: 0.5 } : { delay: 2.2, duration: 0.8 }}
+            className="mt-6 flex justify-center pointer-events-none"
+            aria-hidden="true"
           >
-            <motion.div
-              animate={{ opacity: [0.3, 0.8, 0.3] }}
-              transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
-              className="flex gap-1.5"
-              aria-hidden="true"
-            >
-              <span className="w-1 h-1 rounded-full bg-warm-500" />
-              <span className="w-1 h-1 rounded-full bg-warm-500" />
-              <span className="w-1 h-1 rounded-full bg-warm-500" />
-            </motion.div>
+            <motion.span
+              animate={hasScrolled ? {} : { scaleY: [0.6, 1, 0.6] }}
+              transition={{ repeat: Infinity, duration: 2.8, ease: 'easeInOut' }}
+              className="block w-px h-8 bg-warm-500/50 origin-top"
+            />
           </motion.div>
         </div>
       </div>

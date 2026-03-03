@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { motion } from 'motion/react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { useTheme } from '../hooks/useTheme'
 
 export function Contact() {
   const { ref: sectionRef, isVisible } = useScrollAnimation<HTMLElement>()
@@ -91,11 +93,40 @@ export function Contact() {
   )
 }
 
+const DARK_CHIPS = ['#f0eeea', '#8a8880', '#6b6962']
+const LIGHT_CHIPS = ['#f0ebe2', '#c9a96e', '#7a6840']
+
+function PaletteChip({ hex }: { hex: string }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(hex)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1200)
+    } catch {}
+  }
+
+  return (
+    <button
+      onClick={handleCopy}
+      aria-label={`Copy ${hex}`}
+      className="font-mono text-[10px] tracking-[0.04em] hover:opacity-60 transition-opacity duration-200 select-none"
+      style={{ color: hex }}
+    >
+      {copied ? '✓' : hex}
+    </button>
+  )
+}
+
 export function Footer() {
+  const { isLight } = useTheme()
+  const chips = isLight ? LIGHT_CHIPS : DARK_CHIPS
+
   return (
     <footer className="border-t border-warm-800">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-12">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-8">
           <span className="font-display text-xl font-700 text-warm-50 tracking-[-0.02em]">Kubiak</span>
 
           <div className="flex items-center gap-8">
@@ -119,9 +150,17 @@ export function Footer() {
             </a>
           </div>
 
-          <span className="text-xs uppercase tracking-[0.15em] text-warm-500">
-            &copy; {new Date().getFullYear()} Kubiak
-          </span>
+          {/* Copyright + chips inline */}
+          <div className="flex items-center gap-3 sm:gap-3 ml-auto sm:ml-0">
+            <span className="text-[10px] uppercase tracking-[0.15em] text-warm-500">
+              &copy; {new Date().getFullYear()} Kubiak
+            </span>
+            <div className="flex items-center gap-2">
+              {chips.map((hex) => (
+                <PaletteChip key={hex} hex={hex} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </footer>

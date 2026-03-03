@@ -1,3 +1,4 @@
+import { ThemeProvider } from './hooks/useTheme'
 import { Navigation } from './components/Navigation'
 import { Hero } from './components/Hero'
 import { Services } from './components/Services'
@@ -7,17 +8,19 @@ import { Contact, Footer } from './components/Contact'
 
 function App() {
   return (
-    <div className="relative">
-      <Navigation />
-      <main>
-        <Hero />
-        <Services />
-        <Projects />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="relative">
+        <Navigation />
+        <main>
+          <Hero />
+          <Services />
+          <Projects />
+          <About />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }
 

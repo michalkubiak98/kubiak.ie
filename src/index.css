@@ -17,6 +17,29 @@
   --color-warm-950: #0c0c0b;
 }
 
+/* ─── Cool Gold / Champagne — Light Theme ─────────────────────────────────────
+   Near-black base, warmth lives in accents only.
+   Cool ivory highlights, true gold accent, sophisticated taupe mid-tones.
+
+   Signature colors:
+     Ivory        #f0ebe2  (warm-50)  — cool cream headings
+     True Gold    #c9a96e  (warm-400) — refined gold accent
+     Aged Brass   #7a6840  (warm-500) — muted label tone
+─────────────────────────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --color-warm-50:  #f0ebe2;
+  --color-warm-100: #ddd6c8;
+  --color-warm-200: #c4b99e;
+  --color-warm-300: #a89872;
+  --color-warm-400: #c9a96e;
+  --color-warm-500: #7a6840;
+  --color-warm-600: #4a3d22;
+  --color-warm-700: #302810;
+  --color-warm-800: #2a2312;
+  --color-warm-900: #1e1a10;
+  --color-warm-950: #0e0d0b;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -57,6 +80,11 @@ body::after {
   color: #fff;
 }
 
+[data-theme="light"] ::selection {
+  background: rgba(201, 169, 110, 0.2);
+  color: #f0ebe2;
+}
+
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -68,6 +96,21 @@ body::after {
 ::-webkit-scrollbar-thumb {
   background: var(--color-warm-600);
   border-radius: 999px;
+}
+
+/* Smooth theme transitions — only while switching, not on page load */
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition:
+    background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    fill 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-delay: 0s !important;
 }
 
 /* Reduced motion */
